@@ -11,7 +11,7 @@
 
 ## ETC
 https://www.cpp.edu/~ftang/courses/CS240/lectures/slist.htm
-![SingleLinkedList](https://github.com/gmake20/data-structure/blob/main/pds/linkedlist3.png?raw=true)
+[https://github.com/gmake20/data-structure/blob/main/pds/linkedlist3.png?raw=true]
 
 
 
