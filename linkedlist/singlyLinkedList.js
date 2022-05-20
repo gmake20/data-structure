@@ -86,6 +86,8 @@ console.log(node);
 for(let i=100;i<110;i++)
     list.insert(node,i);
 
+list.delete(3);
+
 // 모든 노드 출력
 node = list.getFirst();
 while(node != null) {
