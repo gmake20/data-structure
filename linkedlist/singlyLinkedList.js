@@ -30,7 +30,7 @@ const LinkedList = function() {
     list.find = function(data) {
 		let tmp = list.head.next;
 		while(true) {
-			if(tmp.data == data) return tmp;
+			if(tmp.data === data) return tmp;
 			if(tmp.next == null) return null;
 			tmp = tmp.next;
 		}
