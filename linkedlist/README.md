@@ -1,6 +1,6 @@
-tail만들어서 add구현할것 
-기존add는 unshift()로 구현할것 
-node사용하지 말것 => 이터레이터 
+# tail만들어서 add구현할것 
+# 기존add는 unshift()로 구현할것 
+# node사용하지 말것 => 이터레이터 
 
 
 
