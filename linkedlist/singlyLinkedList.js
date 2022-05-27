@@ -7,91 +7,135 @@ const LinkedList = function() {
     }
     
     const list = {};
-		list.head = new Node("");
-		list.sz = 0;
+    head = new Node("");
+    tail = new Node("");
+    head.next = tail;
+    sz = 0;
 	
-	// 맨 앞의 원소를 반환(return), 참조 합니다.
-    list.add = function(data) {
+
+    // 첫번째 노드에 삽입한다.
+    list.addFirst = function(data) {
         let node = new Node(data);
-        node.next = list.head.next;
-        list.head.next = node;
-        list.sz++;
-        return node;
-    }	
-	
-    list.insert = function(bnode,data) {
-		let node = new Node(data);
-		node.next = bnode.next;
-		bnode.next = node;
-		list.sz++;
-		return node;
-    }	
-	
-    list.find = function(data) {
-		let tmp = list.head.next;
-		while(true) {
-			if(tmp.data === data) return tmp;
-			if(tmp.next == null) return null;
-			tmp = tmp.next;
-		}
-    }		
-
-    list.delete = function(idx) {		
-		let prev = list.head;
-		let tmp = prev.next;
-		for(let i=1;;i++) {
-			if(tmp == null) return false;
-			if(i==idx) {
-				prev.next = tmp.next;
-				list.sz--;
-				return true;
-			}			
-			prev = tmp;
-			tmp = tmp.next;
-		}
-    }	
-
-    list.getFirst = function() {
-        return list.head.next;
+        node.next = head.next;
+        head.next = node;
+        sz++;
+        return true
     }
 
-    list.getNext = function(node) {        
-        return node==null?null:node.next;
+    list.addLast = function(data) {
+        let node = new Node("");
+        tail.data = data;
+        tail.next = node;
+        tail = node;
+        sz++;
+        return true
+    }
+
+    list.insert = function(idx, data) {
+        if(sz < idx) return false;
+
+        let node = new Node(data);
+        let tmp = head;
+        for(let i=0;;i++) {
+            if(i == idx) {
+                node.next = tmp.next;
+                tmp.next = node;
+                sz++;
+                return true;
+            }            
+            tmp = tmp.next;
+        }
+    }
+
+    // 값에 의한 삭제
+    list.remove = function(data) {
+        let tmp = head;
+        while(true) {
+            if(tmp === this.tail) return false;
+            if(tmp.next.data === data) {
+                tmp.next = tmp.next.next;
+                sz--;
+                return true;
+            }
+            tmp = tmp.next;
+        }
+    }
+
+    list.removeFirst = function() {
+        if(list.isEmpty() == true) return false;
+        head.next = head.next.next;
+        sz--;
+        return true;
+    }
+
+    // 1~sz
+    list.removeIndex = function(idx) {
+        let tmp = head;
+        for(let i=1;i<=idx;i++) {            
+            if(i==idx) {
+                tmp.next = tmp.next.next;
+                sz--;
+                return true;
+            }
+            tmp = tmp.next;
+            if(tmp == tail)
+                return false;
+        }
+
+    }
+    
+    // 검색
+    list.find = function(data) {
+        let node = head.next;
+        while(true) {
+            if(node.data === data) return true;
+            if(node === this.tail) break;
+            node = node.next;
+        }
+        return false;
+    }
+
+    list.print = function() {
+        let node = head.next;
+        while(node != tail) {
+            console.log(node.data);
+            node = node.next;
+        }
     }
 	
 	list.size = function() {
-		return list.sz;
+		return sz;
     }
     
 	list.isEmpty = function() {
-		return list.sz==0;
+		return sz==0;
     }
 	
 	return list;
 }
 
+// 
 list = LinkedList();
-for(let i=1;i<=10;i++) list.add(i);
+for(let i=1;i<=10;i++) list.addLast(i);
 
-// 모든 노드 출력
-node = list.getFirst();
-while(node != null) {
-    console.log(node.data);
-    node = list.getNext(node);
-}
+list = LinkedList();
+for(let i=1;i<=10;i++) list.addFirst(i);
 
-// 중간에 삽입하기
-node = list.find(5);
-console.log(node);
-for(let i=100;i<110;i++)
-    list.insert(node,i);
 
-list.delete(3);
+// 중간에 삽입
+list.insert(0,100);
 
-// 모든 노드 출력
-node = list.getFirst();
-while(node != null) {
-    console.log(node.data);
-    node = list.getNext(node);
-}
+list.insert(10,200);
+
+// 검색
+list.find(5);
+
+// 값에 의한 삭제
+list.remove(6);
+
+// 첫번째 노드 삭제 
+list.removeFirst();
+
+// 중간노드삭제 
+list.removeIndex(2);
 
