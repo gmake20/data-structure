@@ -70,6 +70,7 @@ const LinkedList = function() {
 
     // 1~sz
     list.removeIndex = function(idx) {
+        if(idx<0 || idx>sz) return false;
         let tmp = head;
         for(let i=1;i<=idx;i++) {            
             if(i==idx) {
@@ -93,6 +94,32 @@ const LinkedList = function() {
             node = node.next;
         }
         return false;
+    }
+
+    _get = function(idx) {
+        if(idx<=0 || idx>sz) return null;
+        let tmp = head;
+        for(let i=0;i<=idx;i++) {            
+            if(i==idx) {
+                return tmp;
+            }
+            tmp = tmp.next;
+            if(tmp == tail)
+                return null;
+        }       
+    }
+
+    list.get = function(idx) {
+        let node =_get(idx);
+        if(node == null) return null;
+        return node.data;
+    }
+
+    list.set = function(idx,data) {
+        let node =_get(idx);
+        if(node == null) return false;
+        node.data = data;
+        return true;
     }
 
     list.print = function() {
