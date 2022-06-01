@@ -109,13 +109,13 @@ const DoubleLinkedList = function() {
 
 
 function testInsertFrist() {
-	list = DoubleLinkedList();
+	let list = DoubleLinkedList();
 	for(let i=1;i<=10;i++) list.addFirst(i);	
 	list.print();
 }
 
 function testInsertLast() {
-	list = DoubleLinkedList();
+	let list = DoubleLinkedList();
 	for(let i=1;i<=10;i++) list.addLast(i);	
 	list.print();
 }
@@ -128,7 +128,7 @@ function testRemoveFirst() {
 }
 
 function testRemoveLast() {
-	list = DoubleLinkedList();
+	let list = DoubleLinkedList();
 	for(let i=1;i<=10;i++) list.addFirst(i);	
     for(let i=1;i<=10;i++) list.removeLast();
 	list.print();
@@ -136,14 +136,14 @@ function testRemoveLast() {
 
 
 function testInsert() {
-	list = DoubleLinkedList();
+	let list = DoubleLinkedList();
 	for(let i=1;i<=10;i++) list.addLast(i);	
     for(let i=1;i<=3;i++) list.add(3,i);
 	list.print();
 }
 
 function testGet() {
-	list = DoubleLinkedList();
+	let list = DoubleLinkedList();
 	for(let i=1;i<=10;i++) list.addLast(i);	
     for(let i=0;i<10;i++) {
         console.log(list.getIndex(i));
