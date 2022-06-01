@@ -14,7 +14,7 @@ const DoubleLinkedList = function() {
     tail = new Node();
     head.next = tail;
     tail.prev = head;
-    sz = 0;
+    let sz = 0;
 
 
 	
