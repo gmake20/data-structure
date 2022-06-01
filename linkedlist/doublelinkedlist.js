@@ -1,6 +1,5 @@
 const DoubleLinkedList = function() {
     const list = {};
-    sz = 0;
 
     const Node = function(d) {
         const node = {};
@@ -15,6 +14,8 @@ const DoubleLinkedList = function() {
     tail = new Node();
     head.next = tail;
     tail.prev = head;
+    sz = 0;
+
 
 	
     list.addFirst = function(data) {
