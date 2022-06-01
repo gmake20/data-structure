@@ -1,12 +1,12 @@
 const DoubleLinkedList = function() {
     const list = {};
+    let sz = 0;
 
     const Node = function(d) {
         const node = {};
         node.prev = null;
         node.next = null;
         node.data = d;
-        sz++;
         return node;
     }
     
@@ -14,12 +14,12 @@ const DoubleLinkedList = function() {
     tail = new Node();
     head.next = tail;
     tail.prev = head;
-    let sz = 0;
 
 
 	
     list.addFirst = function(data) {
         let node = new Node(data);
+        sz++;
         node.next = head.next;
         node.prev = head;
         head.next.prev = node;
@@ -34,6 +34,7 @@ const DoubleLinkedList = function() {
 
     list.addLast = function(data) {
         let node = new Node(data);
+        sz++;
         node.next = tail;
         node.prev = tail.prev;
         tail.prev.next = node;
@@ -53,6 +54,7 @@ const DoubleLinkedList = function() {
             tmp = tmp.next;
         }
         let node = new Node(data);
+	sz++;
         node.next = tmp.next;
         tmp.next.prev = node;
         tmp.next = node;
