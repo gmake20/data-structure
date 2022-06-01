@@ -14,7 +14,14 @@ const CLinkedList = function() {
     sz = 0;
 	
 	list.insertTail = function(data) {
-		let node = list.insertHead();
+		let node = new Node(data);
+		if(tail == null) {
+			tail = node;
+			return;
+		}
+
+		node.next = tail.next;
+		tail.next = node;	
 		tail = node; 
 	}
 
@@ -27,7 +34,7 @@ const CLinkedList = function() {
 
 		node.next = tail.next;
 		tail.next = node;	
-		return node;
+
 	}
 
 	list.insertIndex = function(idx,data) {
