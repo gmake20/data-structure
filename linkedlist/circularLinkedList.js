@@ -14,7 +14,7 @@ const CLinkedList = function() {
     sz = 0;
 	
 	list.insertTail = function(data) {
-		list.insertHead();
+		node = list.insertHead();
 		tail = node; 
 	}
 
@@ -27,6 +27,7 @@ const CLinkedList = function() {
 
 		node.next = tail.next;
 		tail.next = node;	
+		return node;
 	}
 
 	list.insertIndex = function(idx,data) {
