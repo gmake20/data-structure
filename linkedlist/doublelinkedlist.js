@@ -47,6 +47,7 @@ const DoubleLinkedList = function() {
         tail.prev = tail.prev.prev;
     }
 
+	// addIndex()
     list.add = function(idx,data) {
         if(idx<0 || sz <= idx) return null;
         let tmp = head.next;
